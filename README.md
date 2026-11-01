@@ -16,14 +16,21 @@ Open `http://localhost:3000`. There are no dependencies to install or build step
 `HOST` and `PORT` can configure the built-in static development server.
 Run tests with `npm test`.
 
+## GitHub Pages
+
+Pushes to `main` automatically deploy the `public/` app to
+`https://chrizspace.github.io/bookconverter/`. The deployment workflow can also
+be run manually from the Actions tab. The app works under the repository path
+and keeps its scans on the current device; no backend is required.
+
 For a phone, serve the `public/` directory through a trusted **HTTPS** static host,
 or put an HTTPS reverse proxy in front of the development server. All application
-paths are root-relative, so deploy at the origin's root. Do not use plain HTTP on
-a LAN: secure browser features require HTTPS (localhost is the development
-exception). Open the HTTPS URL in Safari or Chrome and optionally use **Add to
-Home Screen** / **Install app**. Once loaded, the app can work offline on browsers
-supporting service workers. A camera-equipped physical phone is required to
-verify actual capture.
+paths are relative, so it can also be deployed under a repository path. Do not use
+plain HTTP on a LAN: secure browser features require HTTPS (localhost is the
+development exception). Open the HTTPS URL in Safari or Chrome and optionally use
+**Add to Home Screen** / **Install app**. Once loaded, the app can work offline
+on browsers supporting service workers. A camera-equipped physical phone is
+required to verify actual capture.
 
 ## Scan a book
 

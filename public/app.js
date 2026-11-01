@@ -253,7 +253,7 @@ async function initialize() {
   await renderPages();
   setBusy(false);
   status('Ready. Your scans stay on this device. Export regularly to keep a backup.');
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(() => {});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(() => {});
 }
 
 $('metadata').addEventListener('submit', event => {
