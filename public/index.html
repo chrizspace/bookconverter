@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#153e3a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Book Converter</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header><h1>Book Converter</h1><p>Your camera. Your books. Your device.</p></header>
+  <main>
+    <p>Capture one page at a time in good light. Scans and illustrations are kept at their original quality, without OCR or image compression.</p>
+    <p id="status" role="status" aria-live="polite">Opening your saved book…</p>
+    <progress id="progress" hidden aria-label="Operation progress"></progress>
+    <fieldset id="workspace" disabled>
+      <section aria-labelledby="metadata-heading">
+        <h2 id="metadata-heading">Book details</h2>
+        <form id="metadata">
+          <label>Title <input name="title" required maxlength="500" placeholder="Book title"></label>
+          <label>Author <input name="author" maxlength="500"></label>
+          <label>Language code <input name="language" required value="en" placeholder="en, fr, …" pattern="[A-Za-z]{2,8}(-[A-Za-z0-9]{1,8})*"></label>
+          <label>Reading direction <select name="direction"><option value="ltr">Left to right</option><option value="rtl">Right to left</option></select></label>
+          <label>Publisher <input name="publisher" maxlength="500"></label>
+          <label>Publication date <input name="date" type="date"></label>
+          <label>Identifier (ISBN or URN) <input name="identifier" required maxlength="500"></label>
+          <label>Description <textarea name="description" maxlength="10000"></textarea></label>
+          <label>Rights <input name="rights" maxlength="1000" placeholder="Copyright or license"></label>
+          <button type="submit">Save details</button>
+        </form>
+      </section>
+      <section aria-labelledby="scans-heading">
+        <h2 id="scans-heading">Scan pages</h2>
+        <div class="actions">
+          <label class="file-button">Take photo <input id="camera" type="file" accept="image/jpeg,image/png" capture="environment"></label>
+          <label class="file-button">Import images <input id="import" type="file" accept="image/jpeg,image/png" multiple></label>
+          <button id="storage" type="button">Protect local storage</button>
+        </div>
+        <p id="summary"></p>
+        <p>The first scan is the cover by default. Use “Use as cover” to change it. Move pages into reading order before export.</p>
+        <div id="pages" class="pages"></div>
+        <div class="actions">
+          <button id="previous" type="button">Previous scans</button>
+          <span id="range"></span>
+          <button id="next" type="button">Next scans</button>
+        </div>
+      </section>
+      <section aria-labelledby="export-heading">
+        <h2 id="export-heading">Export &amp; share</h2>
+        <p>EPUBs use fixed-layout scanned pages, preserving illustrations and typography. Book details and the selected cover are included for Apple Books.</p>
+        <p>For very large books, use a browser with direct file-save support (such as desktop Chrome or Edge). Other browsers, including iPhone Safari, may need memory for the final download. Export backups regularly; browser storage is not a permanent backup.</p>
+        <div class="actions">
+          <button id="export" type="button">Export EPUB</button>
+          <button id="share" type="button">Share last EPUB</button>
+          <button id="export-metadata" type="button">Download metadata JSON</button>
+          <button id="new-book" type="button" class="danger">Start a new book</button>
+        </div>
+      </section>
+    </fieldset>
+  </main>
+  <footer>No scans are uploaded. Only scan and share books you have permission to reproduce.</footer>
+</body>
+</html>
